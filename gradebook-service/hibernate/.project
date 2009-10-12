@@ -1,6 +1,6 @@
 <projectDescription>
   <name>gradebook-service-hibernate</name>
-  <comment/>
+  <comment>The Sakai kernel provides core functionality for the Sakai framework</comment>
   <projects>
     <project>gradebook-service-api</project>
     <project>sections-api</project>

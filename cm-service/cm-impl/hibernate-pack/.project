@@ -1,7 +1,8 @@
 <projectDescription>
   <name>coursemanagement-hibernate-pack</name>
-  <comment/>
+  <comment>The Sakai kernel provides core functionality for the Sakai framework</comment>
   <projects>
+    <project>coursemanagement-api</project>
     <project>coursemanagement-hibernate-impl</project>
   </projects>
   <buildSpec>

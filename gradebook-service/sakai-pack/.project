@@ -1,8 +1,9 @@
 <projectDescription>
   <name>gradebook-service-pack</name>
-  <comment/>
+  <comment>The Sakai kernel provides core functionality for the Sakai framework</comment>
   <projects>
     <project>gradebook-service-impl</project>
+    <project>sections-api</project>
     <project>sections-integrationsupport</project>
   </projects>
   <buildSpec>

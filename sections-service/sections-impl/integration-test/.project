@@ -1,7 +1,8 @@
 <projectDescription>
   <name>section-integration-test</name>
-  <comment/>
+  <comment>The Sakai kernel provides core functionality for the Sakai framework</comment>
   <projects>
+    <project>coursemanagement-api</project>
     <project>sections-api</project>
     <project>sections-impl</project>
   </projects>
