@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -11,26 +12,22 @@
     <name>Sakai educational Services Project</name>
     <groupId>org.sakaiproject.edu-services</groupId>
     <artifactId>edu-services</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.0.0-beta02-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
-        <!--
-            <url.localsite>dav:http://source.sakaiproject.org/release/kernel/${project.version}</url.localsite>
-        -->
-        <url.localsite>scp://source.sakaiproject.org/var/www/html/release/edu-services/${project.version}</url.localsite>
-
         <sakai.spring.groupId>org.springframework</sakai.spring.groupId>
         <sakai.spring.artifactId>spring</sakai.spring.artifactId>
         <sakai.spring.version>2.5.6.SEC01</sakai.spring.version>
         <sakai.spring.test.artifactId>spring-test</sakai.spring.test.artifactId>
         <sakai.spring.test.version>2.5.6.SEC01</sakai.spring.test.version>
+        <url.localsite>scp://source.sakaiproject.org/var/www/html/release/edu-services/${project.version}</url.localsite>
     </properties>
 
     <scm>
-        <connection>scm:svn:https://source.sakaiproject.org/svn/edu-services/trunk</connection>
-        <developerConnection>scm:svn:https://source.sakaiproject.org/svn/edu-services/trunk</developerConnection>
-        <url>https://source.sakaiproject.org/svn/edu-services/trunk</url>
+        <connection>scm:svn:https://source.sakaiproject.org/svn/edu-services/branches/edu-services-1.0.x</connection>
+        <developerConnection>scm:svn:https://source.sakaiproject.org/svn/edu-services/branches/edu-services-1.0.x</developerConnection>
+        <url>https://source.sakaiproject.org/svn/edu-services/branches/edu-services-1.0.x</url>
     </scm>
 
     <modules>
@@ -68,6 +65,9 @@
             <id>maven2-central-repo</id>
             <name>Maven2 Central Repo</name>
             <url>http://repo1.maven.org/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
         </pluginRepository>
         <pluginRepository>
             <id>Sakai Plugin Repo</id>
@@ -84,6 +84,9 @@
             <name>Sakai Maven Repository</name>
             <layout>default</layout>
             <url>http://source.sakaiproject.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -93,8 +96,11 @@
             <name>Sakai Maven Repo Snapshots</name>
             <layout>default</layout>
             <url>http://source.sakaiproject.org/maven2-snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
             <snapshots>
-                <enabled>true</enabled>
+                <enabled>false</enabled>
             </snapshots>
         </repository>
         <repository>
@@ -102,6 +108,9 @@
             <name>Maven Repository Switchboard</name>
             <layout>default</layout>
             <url>http://repo1.maven.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -111,6 +120,9 @@
             <name>apache-repo</name>
             <layout>default</layout>
             <url>http://myfaces.zones.apache.org/dist/maven-repository</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
