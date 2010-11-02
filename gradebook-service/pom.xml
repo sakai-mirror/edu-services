@@ -5,13 +5,13 @@
     <parent>
         <artifactId>edu-services</artifactId>
         <groupId>org.sakaiproject.edu-services</groupId>
-        <version>1.1.0-a03-SNAPSHOT</version>
+        <version>1.1.0-a03</version>
     </parent>
     
     <groupId>org.sakaiproject.edu-services.gradebook</groupId>
     <artifactId>gradebook-service</artifactId>
     <name>sakai-gradebook-service</name>
-    <version>1.1.0-a03-SNAPSHOT</version>
+    <version>1.1.0-a03</version>
     <packaging>pom</packaging>
     
     <modules>
