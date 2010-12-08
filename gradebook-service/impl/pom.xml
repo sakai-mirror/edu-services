@@ -4,7 +4,7 @@
     <parent>
         <artifactId>edu-services</artifactId>
         <groupId>org.sakaiproject.edu-services</groupId>
-        <version>1.0.9</version>
+        <version>1.0.10-SNAPSHOT</version>
     </parent>
     <groupId>org.sakaiproject.edu-services.gradebook</groupId>
     <artifactId>gradebook-service-impl</artifactId>
