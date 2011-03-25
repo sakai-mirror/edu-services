@@ -597,7 +597,7 @@ public class GradebookServiceHibernateImpl extends BaseHibernateManager implemen
 				while(it.hasNext()) {
 					cat_cat = (Category) it.next();
 					if(cat_tempt.getName().equals(cat_cat.getName())) {
-						catList.remove(cat_cat);
+						it.remove();
 						it = catList.iterator();
 					}	
 				}
