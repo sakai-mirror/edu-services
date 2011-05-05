@@ -90,6 +90,13 @@
             <artifactId>dom4j</artifactId>
             <version>1.4</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.sakaiproject.kernel</groupId>
+            <artifactId>sakai-component-manager</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
     <reports />
     <build>
