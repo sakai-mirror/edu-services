@@ -15,7 +15,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <sakai.common.version>1.0.7</sakai.common.version>
+        <sakai.common.version>1.0.8</sakai.common.version>
         <sakai.spring.groupId>org.springframework</sakai.spring.groupId>
         <sakai.spring.artifactId>spring</sakai.spring.artifactId>
         <sakai.spring.version>2.5.6.SEC01</sakai.spring.version>
