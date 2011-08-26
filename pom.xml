@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.sakaiproject.purepoms</groupId>
         <artifactId>sakai-standard-tool</artifactId>
-        <version>2.7.11</version>
+        <version>2.7.12</version>
     </parent>
 
     <name>Sakai educational Services Project</name>
@@ -15,7 +15,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <sakai.common.version>1.0.8</sakai.common.version>
+        <sakai.common.version>1.0.9</sakai.common.version>
         <sakai.spring.groupId>org.springframework</sakai.spring.groupId>
         <sakai.spring.artifactId>spring</sakai.spring.artifactId>
         <sakai.spring.version>2.5.6.SEC01</sakai.spring.version>
