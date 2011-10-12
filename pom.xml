@@ -176,7 +176,7 @@
             <dependency>
                 <groupId>org.sakaiproject.common</groupId>
                 <artifactId>archive-api</artifactId>
-                <version>${sakai.common.version}</version>
+                <version>1.1.4</version>
                 <scope>provided</scope>
             </dependency>
             <!-- Used only for test data. -->
