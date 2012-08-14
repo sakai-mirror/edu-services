@@ -5,19 +5,19 @@
     <parent>
         <groupId>org.sakaiproject</groupId>
         <artifactId>master</artifactId>
-        <version>2.9-SNAPSHOT</version>
+        <version>2.9.0-b07</version>
     </parent>
 
     <name>Sakai educational Services Project</name>
     <groupId>org.sakaiproject.edu-services</groupId>
     <artifactId>edu-services</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2.0-b07</version>
     <packaging>pom</packaging>
 
     <scm>
-        <connection>scm:svn:https://source.sakaiproject.org/svn/edu-services/branches/edu-services-1.2.x</connection>
-        <developerConnection>scm:svn:https://source.sakaiproject.org/svn/edu-services/branches/edu-services-1.2.x</developerConnection>
-        <url>https://source.sakaiproject.org/svn/edu-services/branches/edu-services-1.2.x</url>
+        <connection>scm:svn:https://source.sakaiproject.org/svn/edu-services/tags/edu-services-1.2.0-b07</connection>
+        <developerConnection>scm:svn:https://source.sakaiproject.org/svn/edu-services/tags/edu-services-1.2.0-b07</developerConnection>
+        <url>https://source.sakaiproject.org/svn/edu-services/tags/edu-services-1.2.0-b07</url>
     </scm>
 
     <modules>
