@@ -1410,6 +1410,10 @@ public abstract class BaseHibernateManager extends HibernateDaoSupport {
     }
     
 	protected boolean studentCanView(String studentId, Assignment assignment) {
+       boolean checkExternalGroups = serverConfigurationService.getBoolean("gradebook.check.external.groups", false);
+
+        // Skip all this if we don't want to check external groups
+        if (checkExternalGroups) { 
 		if (assignment.isExternallyMaintained()) {
 			try {
 				String gbUid = assignment.getGradebook().getUid();
@@ -1422,6 +1426,7 @@ public abstract class BaseHibernateManager extends HibernateDaoSupport {
 				if (log.isDebugEnabled()) { log.debug("Bogus graded assignment checked for course grades: " + assignment.getId()); }
 			}
 		}
+        }
 		
 		// We assume that the only disqualifying condition is that the external assignment
 		// is grouped and the student is not a member of one of the groups allowed.
@@ -1453,13 +1458,9 @@ public abstract class BaseHibernateManager extends HibernateDaoSupport {
     					
     					// SAK-11485 - We don't want to add scores for those grouped activities
     					//             that this student should not see or be scored on.
-                        boolean checkExternalGroups = serverConfigurationService.getBoolean("gradebook.check.external.groups", false);
-
-                        if (checkExternalGroups) {
     					if (!studentCanView(studentUid, assignment)) {
     						continue;
     					}
-                        }
     					AssignmentGradeRecord gradeRecord = studentToGradeRecordMap.get(studentUid);
    						if (gradeRecord != null) {
    							if (gradeRecord.getPointsEarned() == null) {
