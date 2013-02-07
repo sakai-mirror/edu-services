@@ -12,13 +12,13 @@
     <name>Sakai educational Services Project</name>
     <groupId>org.sakaiproject.edu-services</groupId>
     <artifactId>edu-services</artifactId>
-    <version>1.2.1</version>
+    <version>1.2.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <scm>
-        <connection>scm:svn:https://source.sakaiproject.org/svn/edu-services/tags/edu-services-1.2.1</connection>
-        <developerConnection>scm:svn:https://source.sakaiproject.org/svn/edu-services/tags/edu-services-1.2.1</developerConnection>
-        <url>https://source.sakaiproject.org/svn/edu-services/tags/edu-services-1.2.1</url>
+        <connection>scm:svn:https://source.sakaiproject.org/svn/edu-services/branches/edu-services-1.2.x</connection>
+        <developerConnection>scm:svn:https://source.sakaiproject.org/svn/edu-services/branches/edu-services-1.2.x</developerConnection>
+        <url>https://source.sakaiproject.org/svn/edu-services/branches/edu-services-1.2.x</url>
     </scm>
 
     <modules>
