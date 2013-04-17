@@ -2546,7 +2546,7 @@ public class GradebookServiceHibernateImpl extends BaseHibernateManager implemen
 				session.flush();
 				session.clear();
 				
-				postUpdateGradeEvent(gradebookUid, assignment.getName(), studentUid, Double.valueOf(score));
+				postUpdateGradeEvent(gradebookUid, assignment.getName(), studentUid, convertStringToDouble(score));
 				return null;
 			}
 		});
