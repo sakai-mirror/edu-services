@@ -201,6 +201,9 @@
                     <effort>Max</effort>
                 </configuration>
             </plugin>
+            <!-- this was making the relase fail with
+             "Could not find resource '/rulesets/basic.xml',
+            so it's commented out
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
@@ -228,6 +231,7 @@
                     </rulesets>
                 </configuration>
             </plugin>
+            -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>taglist-maven-plugin</artifactId>
