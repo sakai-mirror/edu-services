@@ -35,6 +35,7 @@ public class GradebookDefinition extends VersionedExternalizable implements Exte
 	private String selectedGradingScaleUid;
 	private Map<String, Double> selectedGradingScaleBottomPercents;
 	private Collection<Assignment> assignments;
+	private boolean displayReleasedGradeItemsToStudents;
 	
 	private int gradeType;
 	private int categoryType;
@@ -84,6 +85,15 @@ public class GradebookDefinition extends VersionedExternalizable implements Exte
 	}
 	public void setCategory(List category) {
 		this.category = category;
+	}
+
+	public boolean isDisplayReleasedGradeItemsToStudents() {
+		return displayReleasedGradeItemsToStudents;
+	}
+
+	public void setDisplayReleasedGradeItemsToStudents(
+			boolean displayReleasedGradeItemsToStudents) {
+		this.displayReleasedGradeItemsToStudents = displayReleasedGradeItemsToStudents;
 	}
 	
 	
