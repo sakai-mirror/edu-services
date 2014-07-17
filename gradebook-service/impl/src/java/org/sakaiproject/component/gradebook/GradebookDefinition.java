@@ -40,6 +40,7 @@ public class GradebookDefinition extends VersionedExternalizable implements Exte
 	private int gradeType;
 	private int categoryType;
 	private List category;
+	private String gradeScale;
 	
     public GradebookDefinition() {
 	}
@@ -94,6 +95,15 @@ public class GradebookDefinition extends VersionedExternalizable implements Exte
 	public void setDisplayReleasedGradeItemsToStudents(
 			boolean displayReleasedGradeItemsToStudents) {
 		this.displayReleasedGradeItemsToStudents = displayReleasedGradeItemsToStudents;
+	}
+
+	public void setGradeScale(String name) {
+		this.gradeScale=name;
+		
+	}
+	
+	public String getGradeScale() {
+		return this.gradeScale;
 	}
 	
 	

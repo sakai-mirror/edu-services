@@ -452,13 +452,11 @@ public class GradebookServiceHibernateImpl extends BaseHibernateManager implemen
 		gradebookDefinition.setSelectedGradingScaleUid(selectedGradeMapping.getGradingScale().getUid());
 		gradebookDefinition.setSelectedGradingScaleBottomPercents(new HashMap<String,Double>(selectedGradeMapping.getGradeMap()));
 		gradebookDefinition.setAssignments(getAssignments(gradebookUid));
-		
 		gradebookDefinition.setGradeType(gradebook.getGrade_type());
 		gradebookDefinition.setCategoryType(gradebook.getCategory_type());	
 		gradebookDefinition.setCategory(getCategories(gradebookId));
 		gradebookDefinition.setDisplayReleasedGradeItemsToStudents(gradebook.isAssignmentsDisplayed());
-		
-		
+		gradebookDefinition.setGradeScale(selectedGradeMapping.getGradingScale().getName());
 		return VersionedExternalizable.toXml(gradebookDefinition);
 	}
 	
