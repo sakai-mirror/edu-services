@@ -54,6 +54,7 @@ import org.sakaiproject.service.gradebook.shared.ConflictingAssignmentNameExcept
 import org.sakaiproject.service.gradebook.shared.ConflictingExternalIdException;
 import org.sakaiproject.service.gradebook.shared.GradebookExternalAssessmentService;
 import org.sakaiproject.service.gradebook.shared.GradebookFrameworkService;
+import org.sakaiproject.service.gradebook.shared.GradebookInformation;
 import org.sakaiproject.service.gradebook.shared.GradebookNotFoundException;
 import org.sakaiproject.service.gradebook.shared.GradebookService;
 import org.sakaiproject.service.gradebook.shared.GradebookPermissionService;
@@ -458,6 +459,24 @@ public class GradebookServiceHibernateImpl extends BaseHibernateManager implemen
 		gradebookDefinition.setDisplayReleasedGradeItemsToStudents(gradebook.isAssignmentsDisplayed());
 		gradebookDefinition.setGradeScale(selectedGradeMapping.getGradingScale().getName());
 		return VersionedExternalizable.toXml(gradebookDefinition);
+	}
+	
+	@Override
+	public GradebookInformation getGradebookInformation(String gradebookUid) {
+		Long gradebookId = getGradebook(gradebookUid).getId();
+		Gradebook gradebook = getGradebook(gradebookUid);
+		
+		GradebookInformation gradebookDefinition = new GradebookInformation();
+		GradeMapping selectedGradeMapping = gradebook.getSelectedGradeMapping();
+		gradebookDefinition.setSelectedGradingScaleUid(selectedGradeMapping.getGradingScale().getUid());
+		gradebookDefinition.setSelectedGradingScaleBottomPercents(new HashMap<String,Double>(selectedGradeMapping.getGradeMap()));
+		gradebookDefinition.setAssignments(getAssignments(gradebookUid));
+		gradebookDefinition.setGradeType(gradebook.getGrade_type());
+		gradebookDefinition.setCategoryType(gradebook.getCategory_type());	
+		gradebookDefinition.setCategory(getCategories(gradebookId));
+		gradebookDefinition.setDisplayReleasedGradeItemsToStudents(gradebook.isAssignmentsDisplayed());
+		gradebookDefinition.setGradeScale(selectedGradeMapping.getGradingScale().getName());
+		return gradebookDefinition;
 	}
 	
 	public void transferGradebookDefinitionXml(String fromGradebookUid, String toGradebookUid, String fromGradebookXml) {
@@ -2995,4 +3014,6 @@ public class GradebookServiceHibernateImpl extends BaseHibernateManager implemen
             eventTrackingService.postEvent("gradebook.updateItemScore","/gradebook/"+gradebookUid+"/"+assignmentName+"/"+studentUid+"/"+pointsEarned+"/student");
         }
     }
+
+	
 }

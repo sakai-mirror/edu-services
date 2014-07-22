@@ -29,6 +29,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * This is the externally exposed API of the gradebook application.
  * 
@@ -334,6 +335,8 @@ public interface GradebookService {
 	 * @param fromGradebookXml
 	 */
 	public void transferGradebookDefinitionXml(String fromGradebookUid, String toGradebookUid, String fromGradebookXml);
+	
+	public GradebookInformation getGradebookInformation(String gradebookUid);
 	
 	/**
 	 * Attempt to merge archived gradebook data (notably the assignnments) into a new gradebook.
