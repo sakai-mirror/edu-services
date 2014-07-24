@@ -453,30 +453,35 @@ public class GradebookServiceHibernateImpl extends BaseHibernateManager implemen
 		gradebookDefinition.setSelectedGradingScaleUid(selectedGradeMapping.getGradingScale().getUid());
 		gradebookDefinition.setSelectedGradingScaleBottomPercents(new HashMap<String,Double>(selectedGradeMapping.getGradeMap()));
 		gradebookDefinition.setAssignments(getAssignments(gradebookUid));
+		
 		gradebookDefinition.setGradeType(gradebook.getGrade_type());
 		gradebookDefinition.setCategoryType(gradebook.getCategory_type());	
 		gradebookDefinition.setCategory(getCategories(gradebookId));
-		gradebookDefinition.setDisplayReleasedGradeItemsToStudents(gradebook.isAssignmentsDisplayed());
-		gradebookDefinition.setGradeScale(selectedGradeMapping.getGradingScale().getName());
+		
 		return VersionedExternalizable.toXml(gradebookDefinition);
 	}
 	
-	@Override
+	
 	public GradebookInformation getGradebookInformation(String gradebookUid) {
-		Long gradebookId = getGradebook(gradebookUid).getId();
+	    
+	        if (!currentUserHasEditPerm(gradebookUid) && !currentUserHasGradingPerm(gradebookUid)) {
+	            log.error("AUTHORIZATION FAILURE: User " + getUserUid() + " in gradebook " + gradebookUid + " attempted to access gb information");
+                    throw new SecurityException("You do not have permission to access gradebook information in site " + gradebookUid);
+	        }
+	        
 		Gradebook gradebook = getGradebook(gradebookUid);
 		
-		GradebookInformation gradebookDefinition = new GradebookInformation();
+		GradebookInformation gradebookInfo = new GradebookInformation();
 		GradeMapping selectedGradeMapping = gradebook.getSelectedGradeMapping();
-		gradebookDefinition.setSelectedGradingScaleUid(selectedGradeMapping.getGradingScale().getUid());
-		gradebookDefinition.setSelectedGradingScaleBottomPercents(new HashMap<String,Double>(selectedGradeMapping.getGradeMap()));
-		gradebookDefinition.setAssignments(getAssignments(gradebookUid));
-		gradebookDefinition.setGradeType(gradebook.getGrade_type());
-		gradebookDefinition.setCategoryType(gradebook.getCategory_type());	
-		gradebookDefinition.setCategory(getCategories(gradebookId));
-		gradebookDefinition.setDisplayReleasedGradeItemsToStudents(gradebook.isAssignmentsDisplayed());
-		gradebookDefinition.setGradeScale(selectedGradeMapping.getGradingScale().getName());
-		return gradebookDefinition;
+		gradebookInfo.setSelectedGradingScaleUid(selectedGradeMapping.getGradingScale().getUid());
+		gradebookInfo.setSelectedGradingScaleBottomPercents(new HashMap<String,Double>(selectedGradeMapping.getGradeMap()));
+		gradebookInfo.setAssignments(getAssignments(gradebookUid));
+		gradebookInfo.setGradeType(gradebook.getGrade_type());
+		gradebookInfo.setCategoryType(gradebook.getCategory_type());	
+		gradebookInfo.setCategory(getCategories(gradebook.getId()));
+		gradebookInfo.setDisplayReleasedGradeItemsToStudents(gradebook.isAssignmentsDisplayed());
+		gradebookInfo.setGradeScale(selectedGradeMapping.getGradingScale().getName());
+		return gradebookInfo;
 	}
 	
 	public void transferGradebookDefinitionXml(String fromGradebookUid, String toGradebookUid, String fromGradebookXml) {
@@ -2719,7 +2724,6 @@ public class GradebookServiceHibernateImpl extends BaseHibernateManager implemen
 	        categoryDef.setDropHighest(category.getDropHighest());
 	        categoryDef.setKeepHighest(category.getKeepHighest());
 	        categoryDef.setAssignmentList(getAssignments(category.getGradebook().getUid(), category.getName()));
-	        
 	    }
 
 	    return categoryDef;
@@ -3014,6 +3018,4 @@ public class GradebookServiceHibernateImpl extends BaseHibernateManager implemen
             eventTrackingService.postEvent("gradebook.updateItemScore","/gradebook/"+gradebookUid+"/"+assignmentName+"/"+studentUid+"/"+pointsEarned+"/student");
         }
     }
-
-	
 }

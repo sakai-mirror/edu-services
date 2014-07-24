@@ -336,6 +336,13 @@ public interface GradebookService {
 	 */
 	public void transferGradebookDefinitionXml(String fromGradebookUid, String toGradebookUid, String fromGradebookXml);
 	
+	/**
+	 * 
+	 * @param gradebookUid
+	 * @return a {@link GradebookInformation} object that contains information about this
+         * Gradebook that may be useful to consumers outside the Gradebook tool
+         * 
+	 */
 	public GradebookInformation getGradebookInformation(String gradebookUid);
 	
 	/**
