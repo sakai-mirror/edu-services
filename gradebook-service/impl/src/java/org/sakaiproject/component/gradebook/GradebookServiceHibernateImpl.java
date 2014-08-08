@@ -463,6 +463,10 @@ public class GradebookServiceHibernateImpl extends BaseHibernateManager implemen
 	
 	
 	public GradebookInformation getGradebookInformation(String gradebookUid) {
+		
+		if (gradebookUid == null ) {
+	          throw new IllegalArgumentException("null gradebookUid " + gradebookUid) ;
+	      }
 	    
 	        if (!currentUserHasEditPerm(gradebookUid) && !currentUserHasGradingPerm(gradebookUid)) {
 	            log.error("AUTHORIZATION FAILURE: User " + getUserUid() + " in gradebook " + gradebookUid + " attempted to access gb information");
@@ -470,17 +474,22 @@ public class GradebookServiceHibernateImpl extends BaseHibernateManager implemen
 	        }
 	        
 		Gradebook gradebook = getGradebook(gradebookUid);
+		if(gradebook==null) {
+			throw new IllegalArgumentException("Their is no gradbook associated with this Id: "+gradebookUid);
+		}
 		
 		GradebookInformation gradebookInfo = new GradebookInformation();
 		GradeMapping selectedGradeMapping = gradebook.getSelectedGradeMapping();
-		gradebookInfo.setSelectedGradingScaleUid(selectedGradeMapping.getGradingScale().getUid());
-		gradebookInfo.setSelectedGradingScaleBottomPercents(new HashMap<String,Double>(selectedGradeMapping.getGradeMap()));
+		if(selectedGradeMapping!=null) {
+			gradebookInfo.setSelectedGradingScaleUid(selectedGradeMapping.getGradingScale().getUid());
+			gradebookInfo.setSelectedGradingScaleBottomPercents(new HashMap<String,Double>(selectedGradeMapping.getGradeMap()));
+			gradebookInfo.setGradeScale(selectedGradeMapping.getGradingScale().getName());
+		}
 		gradebookInfo.setAssignments(getAssignments(gradebookUid));
 		gradebookInfo.setGradeType(gradebook.getGrade_type());
 		gradebookInfo.setCategoryType(gradebook.getCategory_type());	
 		gradebookInfo.setCategory(getCategories(gradebook.getId()));
 		gradebookInfo.setDisplayReleasedGradeItemsToStudents(gradebook.isAssignmentsDisplayed());
-		gradebookInfo.setGradeScale(selectedGradeMapping.getGradingScale().getName());
 		return gradebookInfo;
 	}
 	
