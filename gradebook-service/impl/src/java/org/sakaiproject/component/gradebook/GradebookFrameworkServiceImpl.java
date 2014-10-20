@@ -104,7 +104,9 @@ public class GradebookFrameworkServiceImpl extends BaseHibernateManager implemen
 			  	gradebook.setCourseGradeDisplayed(propCourseGradeDisplayed);
 
 			   	Boolean propCoursePointsDisplayed = serverConfigurationService.getBoolean(PROP_COURSE_POINTS_DISPLAYED,false);
-		   		gradebook.setCoursePointsDisplayed(propCoursePointsDisplayed);
+
+		   		//Feature is only in Sakai 11
+		   		//gradebook.setCoursePointsDisplayed(propCoursePointsDisplayed);
 
 				String defaultScaleUid = GradebookFrameworkServiceImpl.this.getPropertyValue(UID_OF_DEFAULT_GRADING_SCALE_PROPERTY);
 
